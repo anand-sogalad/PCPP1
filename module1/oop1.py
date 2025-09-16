@@ -56,6 +56,8 @@ mobile phone is turned off
 
 
 class Mobile(object):
+    class_var = "I am class variable"
+
     def __init__(self, number):
         self.number = number
 
@@ -120,6 +122,7 @@ def main():
     # __dict__ attribute (note that its not callable)
     print(x_phone.__dict__)
     print(y_phone.__dict__)
+    print(Mobile.__dict__)  # use class name for all the class attributes
 
 
 if __name__ == "__main__":
