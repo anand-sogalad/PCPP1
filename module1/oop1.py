@@ -183,7 +183,9 @@ def main():
         apple = Apple()
         weight_capacity += apple.weight
         ordered_apples += 1
-    print(f"Order: Total apples: {ordered_apples} Total apples: {weight_capacity}")
+    print(
+        f"Order: Total apples: {ordered_apples} Total apples: {round(weight_capacity, 2)}"
+    )
 
 
 if __name__ == "__main__":
