@@ -7,12 +7,18 @@ attribute: It's a class's traits. It can refere to variables and methods inside 
 methods: Methods are callable attributes
 """
 
+import random
+
 
 class Duck(object):
+    born = 0
+    species = "Duck"
+
     def __init__(self, height, weight, sex):
         self.__height = height
         self.__weight = weight
         self.__sex = sex
+        Duck.born += 1
 
     def walk(self):
         return "duck can walk"
@@ -31,6 +37,16 @@ class Duck(object):
     @property
     def sex(self):
         return self.__sex
+
+
+class Chicken(object):
+    species = "Chicken"
+
+    def walk(self):
+        return "chicken can walk"
+
+    def cluck(self):
+        return "cluck cluck"
 
 
 """
@@ -79,6 +95,31 @@ class Mobile(object):
         return f"calling {number}"
 
 
+"""
+Scenario
+Imagine that you receive a task description of an application that monitors the process of apple packaging before the apples are sent to a shop.
+
+A shop owner has asked for 1000 apples, but the total weight limitation cannot exceed 300 units.
+
+Write a code that creates objects representing apples as long as both limitations are met. When any limitation is exceeded, than the packaging process is stopped, and your application should print the number of apple class objects created, and the total weight.
+
+Your application should keep track of two parameters:
+
+the number of apples processed, stored as a class variable;
+the total weight of the apples processed; stored as a class variable. Assume that each apple's weight is random, and can vary between 0.2 and 0.5 of an imaginary weight unit;
+Hint: Use a random.uniform(lower, upper) function to create a random number between the lower and upper float values.
+"""
+
+
+class Apple(object):
+    def __init__(self):
+        self.__weight = random.uniform(0.2, 0.5)
+
+    @property
+    def weight(self):
+        return self.__weight
+
+
 def main():
     # creating instances of the abovve class
     duckling = Duck(10, 3.4, "male")
@@ -123,6 +164,26 @@ def main():
     print(x_phone.__dict__)
     print(y_phone.__dict__)
     print(Mobile.__dict__)  # use class name for all the class attributes
+
+    chicken = Chicken()
+
+    print(f"Total born ducks are : {Duck.born}")
+    for chickies in duckling, drake, hen, chicken:
+        print(f"I belongs to {chickies.species}")
+        if chickies.species == "Duck":
+            print(chickies.quack())
+        else:
+            print(chickies.cluck())
+
+    # Apple problem
+    ordered_apples = 0
+    weight_capacity = 0
+
+    while weight_capacity < 300 and ordered_apples < 1000:
+        apple = Apple()
+        weight_capacity += apple.weight
+        ordered_apples += 1
+    print(f"Order: Total apples: {ordered_apples} Total apples: {weight_capacity}")
 
 
 if __name__ == "__main__":
