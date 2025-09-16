@@ -116,6 +116,11 @@ def main():
     print(x_phone.turn_off())
     print(y_phone.turn_off())
 
+    # if you would like to see the content of each attributes and their value use
+    # __dict__ attribute (note that its not callable)
+    print(x_phone.__dict__)
+    print(y_phone.__dict__)
+
 
 if __name__ == "__main__":
     main()
