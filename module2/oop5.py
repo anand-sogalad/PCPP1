@@ -65,3 +65,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+    """
+    Decorator call sequence
+    the call sequence will look like the following:
+
+    the outer_decorator is called to call the inner_decorator, then the inner_decorator calls your function;
+    when your function ends it execution, the inner_decorator takes over control, and after it finishes its execution, the outer_decorator is able to finish its job.
+    """
