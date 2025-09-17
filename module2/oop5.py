@@ -59,7 +59,7 @@ def func3():
 
 
 def main():
-    # func2()  # not decorated
+    func2()  # not decorated
     func3()
 
 
