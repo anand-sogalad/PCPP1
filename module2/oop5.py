@@ -27,7 +27,7 @@ def logger(func):
 
 
 # implement a decorator that also takes arguments
-def decorator_factory(name="decorator_factor"):
+def decorator_factory(_func=None, *, name="decorator_factor"):
     def decorator(func):
         def wrapper(*args, **kwargs):
             print(f"I am using decorator factory argument : {name}")
@@ -38,10 +38,12 @@ def decorator_factory(name="decorator_factor"):
 
         return wrapper
 
-    return decorator
+    if _func == None:
+        return decorator
+    return decorator(_func)
 
 
-@simple_dcorator
+# @simple_dcorator
 def func1():
     print("Hello I am func1")
 
@@ -50,13 +52,14 @@ def func2():
     print("Hello I am func2")
 
 
+@decorator_factory
 @logger
 def func3():
     print("I am function 3")
 
 
 def main():
-    func2()  # not decorated
+    # func2()  # not decorated
     func3()
 
 
