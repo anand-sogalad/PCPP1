@@ -39,6 +39,14 @@ class ClassVariableExampple1(object):
     def get_class_var1(cls):
         return cls.__class_var1
 
+    # this is another use of class method.
+    # can be used for creating instance of a class alternatively
+    @classmethod
+    def with_extra_arg(cls, arg):
+        _cls = cls()
+        _cls.arg = arg
+        return _cls
+
 
 def main():
     obj1 = ClassVariableExampple1()
